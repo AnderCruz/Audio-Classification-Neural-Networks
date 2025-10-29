@@ -2,11 +2,11 @@
 
 This project provides a comprehensive exploration of various neural network approaches for audio classification using TensorFlow and Keras. The implementation covers the complete machine learning pipeline from data loading and preprocessing to model deployment and inference.
 
-## 📋 Project Overview
+## Project Overview
 
 The notebook demonstrates multiple state-of-the-art techniques for audio classification, comparing different architectural approaches and their performance on speech command recognition tasks.
 
-## 🎯 Key Features & Techniques
+## Key Features & Techniques
 
 ### Data Handling & Preprocessing
 - **Audio Loading**: Reading WAV files from compressed archives (.gz, .tar formats)
@@ -45,7 +45,7 @@ The notebook demonstrates multiple state-of-the-art techniques for audio classif
 - **Custom Head**: Training new classification layers on top of frozen embeddings
 - **Dataset Adaptation**: Applied to ESC-50 environmental sound classification dataset
 
-## 📊 Dataset Information
+## Dataset Information
 
 ### Speech Commands Dataset
 - **36 Audio Classes**: 
@@ -61,7 +61,7 @@ The notebook demonstrates multiple state-of-the-art techniques for audio classif
 - 50 classes of environmental recordings
 - Used for YAMNet transfer learning experiments
 
-## 🛠 Technical Implementation
+## Technical Implementation
 
 ### Preprocessing Pipeline
 ```python
@@ -86,7 +86,7 @@ def load_and_process_audio(filename, max_length=16000):
 - Confusion matrix analysis
 - Performance comparison across architectures
 
-## 🚀 Usage Examples
+## Usage Examples
 
 ### Basic Training
 ```python
@@ -112,7 +112,7 @@ yamnet_model = hub.load('https://tfhub.dev/google/yamnet/1')
 # Extract embeddings and train custom classifier
 ```
 
-## 📈 Performance Metrics
+## Performance Metrics
 
 The project includes comprehensive evaluation of:
 - **Training Accuracy**: Model performance on training data
@@ -136,7 +136,7 @@ def predict_audio_class(model, audio_path):
 model_spectrogram.save('audio_classification_model.h5')
 ```
 
-## 🔧 Requirements
+## Requirements
 
 ### Core Dependencies
 ```
@@ -154,7 +154,7 @@ tensorflow-hub  # For YAMNet transfer learning
 ipython         # For notebook visualization
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 audio_classification/
@@ -168,11 +168,11 @@ audio_classification/
     └── audio_processing.py         # Helper functions
 ```
 
-## 🏷️ Tags
+## Tags
 
 `audio-classification` `neural-networks` `tensorflow` `keras` `cnn` `spectrogram-analysis` `transfer-learning` `yamnet` `speech-recognition` `machine-learning` `deep-learning` `audio-processing` `python` `1d-cnn` `2d-cnn` `attention-mechanism` `signal-processing` `audio-ml` `environmental-sound-classification` `speech-commands` `esc-50` `data-augmentation` `tf-data-pipeline`
 
-## 🔬 Research Applications
+## Research Applications
 
 This project demonstrates practical implementations of:
 - Multi-modal neural network architectures for audio
@@ -181,7 +181,7 @@ This project demonstrates practical implementations of:
 - Attention mechanisms for improved feature learning
 - Production-ready data preprocessing pipelines
 
-## 💡 Potential Extensions
+## Potential Extensions
 
 - Real-time audio classification
 - Mobile deployment with TensorFlow Lite
@@ -189,7 +189,7 @@ This project demonstrates practical implementations of:
 - Audio generation and style transfer
 - Cross-modal learning (audio + text)
 
-## 📚 References
+## References
 
 - TensorFlow Audio Recognition Tutorials
 - YAMNet: Pre-trained audio event classifier
