@@ -8,9 +8,9 @@ import gdown
 import os
 import tempfile
 
-# Configuração da página com ícone
+# Page configuration with icon
 st.set_page_config(
-    page_title="Classificador de Áudio",
+    page_title="Audio Classifier",
     page_icon="🎵",
     layout="centered"
 )
@@ -21,12 +21,12 @@ def load_model():
     url = "https://drive.google.com/uc?id=1-LjLpaLOfivA145KYU5sX-JssfJEwNiH"
 
     if not os.path.exists(model_path):
-        st.info("📥 Baixando modelo...")
+        st.info("📥 Downloading model...")
         gdown.download(url, model_path, quiet=False)
-        st.success("✅ Download concluído!")
+        st.success("✅ Download completed!")
 
     model = tf.keras.models.load_model(model_path)
-    st.success("✅ Modelo carregado com sucesso!")
+    st.success("✅ Model loaded successfully!")
     return model
 
 @st.cache_resource
@@ -74,20 +74,21 @@ def predict_audio_class(file_path, model, class_map):
     return predicted_class_name
 
 def main():
-    st.title("Classificador de Áudio 🎶")
-    st.write("Carregue um arquivo de áudio para classificar")
+    st.title("Audio Classifier 🎶")
+    st.write("Upload an audio file to classify")
 
-    uploaded_file = st.file_uploader("Carregar arquivo de áudio", type=["mp3"])
+    uploaded_file = st.file_uploader("Upload audio file", type=["mp3"])
     if uploaded_file is not None:
         st.audio(uploaded_file, format="audio/mp3")
 
-        mapeamento = {'dog': 0, 'door_wood_creaks': 1, 'glass_breaking': 2}
-        mapeamento_inverso = {v: k for k, v in mapeamento.items()}
+        # Define classes
+        class_mapping = {'dog': 0, 'door_wood_creaks': 1, 'glass_breaking': 2}
+        class_mapping_inv = {v: k for k, v in class_mapping.items()}
 
         model = load_model()
-        predicted_class = predict_audio_class(uploaded_file, model, mapeamento_inverso)
+        predicted_class = predict_audio_class(uploaded_file, model, class_mapping_inv)
 
-        # Classe prevista destacada com caixa colorida e centralizada
+        # Highlight predicted class with a colored box
         st.markdown(
             f"""
             <div style="
@@ -99,7 +100,7 @@ def main():
                 font-size:24px;
                 font-weight:bold;
             ">
-                Classe Prevista: {predicted_class.upper()}
+                Predicted Class: {predicted_class.upper()}
             </div>
             """,
             unsafe_allow_html=True
