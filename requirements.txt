@@ -1,0 +1,7 @@
+streamlit
+numpy
+tensorflow
+tensorflow-hub
+librosa
+scipy
+gdown
